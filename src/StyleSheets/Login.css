@@ -1,0 +1,16 @@
+form{
+    background-color: white;
+    padding: 0px 60px;
+    border-radius: 10px;
+}
+form{
+display: flex;
+flex-direction: column;
+width: 700px;
+}
+
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+}
