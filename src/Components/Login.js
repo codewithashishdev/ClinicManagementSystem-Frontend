@@ -47,6 +47,7 @@ export default function Login(props) {
         setErrors(errorData.errors)
       }else {
         if ( User.user_type === 'Patient') {
+          console.log(User.user_type)
           window.location.href ='http://localhost:3000/patientdashboard'
         } else if (User.user_type === 'Doctor') {
           window.location.href ='http://localhost:3000/doctordashboard'
@@ -86,15 +87,16 @@ export default function Login(props) {
               <label htmlFor="exampleInputPassword1" className="form-label"> Password*</label>
               <input type="password"className="form-control"id="exampleInputPassword1" value={Password}placeholder="password" onChange={onChangePassword}/>
             </div>
-                 {/* Password */}
+                 {/*forgot Password */}
             <p className="mb-3 col px-md-5">
               <Link className="link-opacity-75-hover mb-3" to="/forgotpassword">ForgotPassword?</Link>
             </p>
-                  {/* Password */}
+                  {/* Login */}
             <div className="col px-md-5">
               <button type="submit" className="btn btn-primary mx-1 my-2">
                 <Link className="nav-link" id="login"onClick={saveUser}>Login</Link>
               </button>
+              {/* signUp */}
               <div> If you Have not a Account</div>  
               <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> SignUp</Link>
             </div>

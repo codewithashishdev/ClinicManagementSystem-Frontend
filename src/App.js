@@ -10,6 +10,7 @@ import DocotorDashboard from "./Components/DocotorDashboard";
 import AddFeedback from "./Components/AddFeedback";
 import StaffDashboard from "./Components/StaffDashboard";
 import CreateBill from "./Components/CreateBill";
+import Example from "./Components/Example";
 function App() {
   return (
     <Router>
@@ -38,6 +39,7 @@ function App() {
       <Routes>
       <Route path="/staffdashboard/createbill" element={<CreateBill />}/>
       <Route path="/staffdashboard/bookappointment" element={<BookAppointment />}/>
+      <Route path="/staffdashboard/example" element ={<Example/>}/>
       </Routes>
     </Router>
   );

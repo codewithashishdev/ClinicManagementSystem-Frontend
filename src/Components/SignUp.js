@@ -62,17 +62,17 @@ const handleChange = (e) => {
  const CreateUser =async()=>{
 
 
-  console.log( Fullname,Email,Password,PhoneNo,UseType,Address,Landmark,City,State,Pin,date)
-  console.log("usertype",UseType)
-  console.log("date",date)
-  console.log('gender',Gender)
-  console.log('usertype',UseType)
+  // console.log( Fullname,Email,Password,PhoneNo,UseType,Address,Landmark,City,State,Pin,date)
+  // console.log("usertype",UseType)
+  // console.log("date",date)
+  // console.log('gender',Gender)
+  // console.log('usertype',UseType)
  let User = {
    "full_name": Fullname,
    "gender":Gender,
    "email": Email,
    "phone":PhoneNo,
-   "password": Password,
+   "password":Password,
    "user_type":UseType,
    "date_of_birth":date,
    "address_line_1":Address,
@@ -82,8 +82,8 @@ const handleChange = (e) => {
    "pin":Pin  
  };
 
-
 let data = JSON.stringify(User);
+
 
 let config = {
   method: 'post',
@@ -108,9 +108,6 @@ axios.request(config)
 });
 
 }
-
-
- 
   return (
     <>
       <div className="container me-5 my-5" style={{ marginTop: "2%" }}>
