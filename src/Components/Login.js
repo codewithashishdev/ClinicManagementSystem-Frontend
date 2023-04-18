@@ -23,7 +23,6 @@ export default function Login(props) {
   const onChangePassword =(event)=>{
     setPassword(event.target.value)
   }
-
  const saveUser = async(event) => {
   const User ={user_type: UserType ,email:Email,password:Password}
  
@@ -63,10 +62,10 @@ export default function Login(props) {
   return (
     <>
       <div className="container me-5 " style={{ marginTop: "2%" }}>
-        <h3 className="text-primary text-uppercase mb-3">Login</h3>
-        <form >
-          <div>
-            <hr />
+        
+        <form className=" container border border-secondary col-6 mx-my-3 mb-3" >
+          <div className="mb-5 mt-2">
+          <h3 className="text-primary text-uppercase mb-3">Login</h3>
                  {/* userType */}
             <div className="col px-md-5">
               <div className="mb-2">Select Your Role*</div>
@@ -86,21 +85,22 @@ export default function Login(props) {
             <div className="mb-3 col px-md-5">
               <label htmlFor="exampleInputPassword1" className="form-label"> Password*</label>
               <input type="password"className="form-control"id="exampleInputPassword1" value={Password}placeholder="password" onChange={onChangePassword}/>
+              <Link className="ml-auto border-link small-xl" to="/forgotpassword"> Forget Password? </Link>   
             </div>
-                 {/*forgot Password */}
-            <p className="mb-3 col px-md-5">
-              <Link className="link-opacity-75-hover mb-3" to="/forgotpassword">ForgotPassword?</Link>
-            </p>
+        
                   {/* Login */}
-            <div className="col px-md-5">
+            <div className="text-center">
               <button type="submit" className="btn btn-primary mx-1 my-2">
-                <Link className="nav-link" id="login"onClick={saveUser}>Login</Link>
+                <Link className="nav-link " id="login"onClick={saveUser}>Log In</Link>
               </button>
               {/* signUp */}
-              <div> If you Have not a Account</div>  
-              <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> SignUp</Link>
+              <div>
+                
+              <small> Not a member? </small>  
+              <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> Sign Up</Link>
+              </div>
             </div>
-            <hr />
+           
           </div>
         </form>
       </div>

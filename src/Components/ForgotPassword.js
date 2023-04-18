@@ -41,7 +41,8 @@ axios.request(config)
 }
 
   return (
-    <div className="container my-5 mx-5">
+    <div className="container my-5 px-md-5">
+        <form class=" container border border-secondary col-7 mx-my-3" >
       <div className="text-primary text-uppercase">
         <h3>Forgot Password</h3>
       </div>
@@ -55,6 +56,7 @@ axios.request(config)
       <div className="my-2">
         <button className="btn btn-primary mx-1 mx-5" onClick={onForgotPassword}><Link className="nav-link"> Send Otp</Link></button>
       </div>
+      </form>
     </div>
   );
 }

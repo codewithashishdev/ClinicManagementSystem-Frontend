@@ -39,15 +39,17 @@ const onChangeDieases =(event) =>{
 }
 
 const dateInputRef = useRef(null);
-
-const handleChange = (e) => {
-  setDate(e.target.value);
+const handleChange = (event) => {
+  setDate(event.target.value);
 };
+const handleChangetime =(event)=>{
+  settime(event.target.value);
+}
 
 const bookAppointment = async(event) => {
   console.log("patientId",PatientID)
-  console.log('date',date)
-  console.log('time',time)
+  console.log('date',date,typeof date)
+  console.log('time',time,typeof time)
   console.log('Create by',CreateBy)
   console.log('doctorId',DoctorID)
   console.log('cratedby',IsActive)
@@ -56,8 +58,8 @@ const bookAppointment = async(event) => {
 
 let Appointment ={
   "patientID" :PatientID,
-  "time":"9:40",
-  "date":date,
+  "time": time,
+  "date": date,
   "doctorID": DoctorID,
   "create_by":CreateBy,
   "disease":Dieases,
@@ -93,22 +95,23 @@ axios.request(config)
  
   return (
     <div className="container my-5 mx-5">
-      <h3 className="text-primary"> Book Appointment</h3><hr />
+      <form class=" container border border-secondary col-6 mx-my-3" >
+      <h3 className="text-primary"><ins> Book Appointment</ins></h3>
+        
     {/* PatientID  */}
     <div className="mb-3 mx-5">
-        <label htmlFor="PatientID" className="form-label">  PatientID* </label>
+        <label htmlFor="PatientID" className="form-label"> PatientID* </label>
         <input type="number" className="form-control" id="PatientID" value={PatientID} onChange={onChangePatientID}/>
       </div>
       {/* appoitment date  */}
       <div className="my-2 mb-3 mx-5">
         <p>Appointment Date* {date}</p>
-        <input type="date" onChange={handleChange} ref={dateInputRef} onSelect={onChangedate} />
+        <input type="date"className="form-control" onChange={handleChange} onSelect={onChangedate} />
       </div>
       {/* Appointment time */}
       <div className="my-2 mb-3 mx-5">
-        <label htmlFor="appt" className="form-label"   value={time}  onSelect={onChangetime}  >Choose A Time For Your Check Up* </label>
-        <div> <input  type="time"  id="appt"  name="appt" min="09:00" max="18:00" /> </div>
-  <small>Doctor available time is hours are 9am to 6pm</small>
+        <p>Appointment Time* {time}</p>
+        <input type="time"className="form-control"onChange={handleChangetime} onSelect={onChangetime} />
       </div>
         {/* userType */}
         <div className="my-2 mx-5">
@@ -154,6 +157,7 @@ axios.request(config)
             <Link className="nav-link" onClick={bookAppointment}> Create  </Link>
           </button>
         </div>
+        </form>
     </div>
     
   );

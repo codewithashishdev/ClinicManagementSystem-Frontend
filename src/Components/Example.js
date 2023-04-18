@@ -20,9 +20,7 @@ const [errors, setErrors] = useState([])
         onSubmit:(values)=>{
           console.log("submited values",values);
           console.log(values.UserType)
-          data = values
-
-          
+       
         },
 
 })

@@ -95,9 +95,10 @@ const onClickCreateBill =(event)=>{
 }
   
   return (
-    <div>
+    <>
     <div className="container my-5 mx-5">
-      <h3 className="text-primary"> Create Bill</h3> <hr />
+    <form class=" container border border-secondary col-6 mx-my-3" >
+      <h3 className="text-primary"><ins> Create Bill</ins></h3> 
       {/* PatientID  */}
       <div className="mb-3 mx-5">
         <label htmlFor="PatientID" className="form-label">  PatientID* </label>
@@ -168,8 +169,12 @@ const onClickCreateBill =(event)=>{
         <button type="submit" className="btn btn-primary mx-1 my-2">
           <Link className="nav-link"  id="addfeedback" onClick={onClickCreateBill}> Create Bill  </Link>
         </button>
+        <button type="submit" className="btn btn-primary mx-1 my-2">
+          <Link className="nav-link"  id="addfeedback" to ="/staffdashboard"> Back</Link>
+        </button>
       </div>
+  </form>
     </div>
-  </div>
+  </>
   )
 }

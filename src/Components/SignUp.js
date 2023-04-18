@@ -110,9 +110,9 @@ axios.request(config)
 }
   return (
     <>
-      <div className="container me-5 my-5" style={{ marginTop: "2%" }}>
-        <h3 className="mb-3 text-primary text-uppercase ">Sign Up</h3> <hr />
-        <form >
+      <div className="container " style={{ marginTop: "2%" }}>
+        <form className=" container border border-secondary col-7 " >
+        <h3 className="mb-3 text-primary text-uppercase ">Sign Up</h3> 
         {/* fullname */}
         <div className="mb-3 mx-5">
           <label htmlFor="exampleFormControlInput1" className="form-label">  Full Name* </label>
@@ -189,12 +189,23 @@ axios.request(config)
           <label htmlFor="exampleFormControlInput6" className="form-label">  PinCode*</label>
           <input type="number"  className="form-control" id="pin" placeholder="ex -364505"  value={Pin}  onChange={onChangePin}/>
         </div>
+        {/* photo */}
+      <div className="mb-3 mx-5">
+      <label htmlFor="exampleFormControlFile1">Photo</label><br />
+      <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
+     </div>
         {/* sigup buttons */}
         <div className="my-2 mx-5">
           <button className="btn btn-primary mx-1">
-            <Link className="nav-link"onClick={CreateUser}> Sign Up </Link>
+            <Link className="nav-link" onClick={CreateUser}> Sign Up </Link>
+          </button>
+             {/* back buttons */}
+          <button className="btn btn-primary mx-1">
+            <Link className="nav-link" to = '/'>Back </Link>
           </button>
         </div>
+        
+       
         </form>
       </div>
     </>

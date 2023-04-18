@@ -76,8 +76,8 @@ axios.request(config)
   return (
     <div>
       <div className="container my-5 mx-5">
-        <h3 className="text-primary"> Add Feedback</h3>
-        <hr />
+        <h3 className="text-primary"><ins>Add Feedback</ins> </h3>
+        <form class=" container border border-secondary col-6 mx-my-3" >
         {/* appoitment  */}
         <div className="mb-3 mx-5">
           <label htmlFor="FeedbackID" className="form-label" >  FeedbackID* </label>
@@ -119,6 +119,7 @@ axios.request(config)
             <Link  className="nav-link"  id="addfeedback" onClick={CreateFeedback}  >  Add FeedBack </Link>
           </button>
         </div>
+       </form>
       </div>
     </div>
   );
