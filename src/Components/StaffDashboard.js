@@ -6,31 +6,6 @@ import '../StyleSheets/Dashboard.css'
 
 export default function StaffDashboard() {
 
-
-
-const onClickAppointmentList =() =>{
-  let data = JSON.stringify({
-    "patientId": 1
-  });
-  
-  let config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: 'http://localhost:3000/staff/appoitment/list',
-    headers: { 
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
-  
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
   return (
     <>
     <div>

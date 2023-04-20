@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import BookAppointment from "./BookAppointment";
 import AppointmentLogo from '../Images/Appointment.jpg'
 import Logo from '../Images/Logo.png'
 import '../StyleSheets/Dashboard.css'
 
 
-export default function PatientDashboard(props) {
+
+
+export default function PatientDashboard() {
+
   return (<>
     <nav className="navbar navbar-expand-lg bg-body-tertiary " style={{ backgroundColor: "#e3f2fd" }}>
       <div className="container-fluid">
@@ -22,13 +23,13 @@ export default function PatientDashboard(props) {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item mx-2" >
-              <Link className="nav-link active text-primary " aria-current="page" to="/patientdashboard/bookappointment">Book Appointment</Link>
+              <Link className="nav-link active text-primary" aria-current="page" to='/patientdashboard/bookappointment'>Book Appointment</Link>
             </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-primary " to="/patientdashboard/appointmentlist" > Appointment List</Link>
             </li>
             <li className="nav-item mx-2">
-              <Link className="nav-link text-primary" to="/patientdashboard/viewbill">View Bill</Link>
+              <Link className="nav-link text-primary" to="/patientdashboard/viewbill">ViewBill</Link>
             </li>
           </ul>
           <ul className="navbar-nav topnav-right">
@@ -71,8 +72,8 @@ export default function PatientDashboard(props) {
                         <h1 className="display-4">Make An Appointment For Your Family</h1>
                     </div>
                     <p className="mb-5">This App Make your Appointment Easy And Simple To Save Your Time </p>
-                    <Link className="btn btn-dark rounded-pill py-3 px-5 me-3" to="/patientdashboard/bookappointment">Make Appointment</Link>
-                    <Link className="btn btn-outline-dark rounded-pill py-3 px-5" to="/patientdashboard/viewbill">View Bill </Link>
+                    <Link className="btn btn-dark rounded-pill py-3 px-5 me-3" to="/patientdashboard/bookappointment">Make Appointments</Link>
+                    <Link className="btn btn-dark rounded-pill py-3 px-5 me-3" to="/patientdashboard/viewbill">View Bills </Link>
                 </div>
             </div>
         </div>

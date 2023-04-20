@@ -1,5 +1,5 @@
 import React, { state, useState,useEffect ,useRef} from "react";
-import {useNavigate} from "react-router";
+import {useNavigate} from "react-router-dom";
 import "../StyleSheets/Login.css";
 import axios from'axios'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -54,7 +54,7 @@ export default function Login(props) {
         } else if (User.user_type === 'Doctor') {
           navigate('/doctordashboard')
         } else if(User.user_type==='Staff') {
-          navigate('/doctordashboard')
+          navigate('/staffdashboard')
         }
       }
   })

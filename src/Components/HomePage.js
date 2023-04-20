@@ -6,7 +6,6 @@ import {
   Link
 } from "react-router-dom";
 import Login from "./Login";
-import Home1 from "../Images/Dashborad1.jpg"
 import Footer from "./Footer";
 import Logo from '../Images/Logo.png'
 import '../StyleSheets/Home.css'
@@ -24,7 +23,6 @@ export default function Hero() {
           </Link><ins>Clinic Management</ins></div>
   {/* hero */}
       <div className="container-fluid   hero-header">
-         
         <div className="container py-5"  id ="hero">
           <div className="row justify-content-start">
             <div className="col-lg-8 text-center text-lg-start">
@@ -39,11 +37,9 @@ export default function Hero() {
       {/* about content */}
       <div className="container-fluid py-5">
         <div className="container">
-            <div className="row gx-5">
+            <div className="row gx-5" >
                 <div className="col-lg-5 mb-5 mb-lg-0" >
-                    <div className="position-relative h-100">
-                        <img className="position-absolute w-100 h-100 rounded" src={Home1}/>
-                    </div>
+                    <div id="second"></div>
                 </div>
                 <div className="col-lg-7">
                     <div className="mb-4">

@@ -1,39 +1,38 @@
-import React,{useEffect, useState} from 'react'
-import axios from 'axios';
-import{Link} from 'react-router-dom'
-import '../StyleSheets/AppointmentList.css'
-import BillDetail from './BillDetail';
+import React,{useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 
-export default function ViewBill() {
-
+export default function BillDetail() {
   const[Bill,setBill] =useState([])
   
   useEffect(()=>{
-    let data = '';
-
+    let data =''
+    
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: 'http://localhost:3001/staff/bill/list',
-      headers: { },
+      url: 'http://localhost:3001/staff/bill/:patientID',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
       data : data
     };
     
     axios.request(config)
     .then((response) => {
-      console.log('response.data.data',response.data.data)
-      setBill(response.data.data)
+      console.log(JSON.stringify(response.data));
     })
     .catch((error) => {
       console.log(error);
     });
+    
 },[])
- console.log('Bill:',Bill)
+
   return (
-  <>
+    <>
    <h3  className=' text-primary mx-5'>
-  <ins>BillList</ins>
+  <ins>Bill Status</ins>
   </h3>  
   <div className ="th" style={{marginTop:"150px"}}>
     <table className='table'>
@@ -80,6 +79,5 @@ export default function ViewBill() {
     </table>
   </div>
   </>
-
   )
 }

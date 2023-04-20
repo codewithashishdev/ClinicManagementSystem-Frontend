@@ -10,3 +10,15 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#second{
+        /* The image used */
+        background-image: url(../Images/Vision.jpg);
+
+        /* Full height */
+        height: 100%; 
+    
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
