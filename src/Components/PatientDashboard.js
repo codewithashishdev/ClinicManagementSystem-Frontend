@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import BookAppointment from "./BookAppointment";
 import AppointmentLogo from '../Images/Appointment.jpg'
 import Logo from '../Images/Logo.png'
+import '../StyleSheets/Dashboard.css'
 
 
 export default function PatientDashboard(props) {
@@ -13,7 +14,7 @@ export default function PatientDashboard(props) {
         <a className="navbar-brand navbar-light bg-light text-primary">
           <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
         </a>
-        <Link className="navbar-brand text-primary " to="/patientdashboard"> Dashboard   </Link>
+        <Link className="navbar-brand text-primary " to="/patientdashboard">Dashboard</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -43,14 +44,14 @@ export default function PatientDashboard(props) {
     </nav>
     
       <div className="bg-white">
-        <div className="container-fluid bg-primary py-5 hero-header">
+        <div className="container-fluid bg-primary py-5 hero-header" id="DashBoard">
      
           <div className="container py-5">
             <div className="row justify-content-start">
               <div className="col-lg-8 text-center text-lg-start">
-                <h5 className="d-inline-block text-white text-uppercase "><ins>Patient's Dashboard</ins> </h5>
-                <h1 className="display-1 text-white mb-md-4">Welcome To Clinic Management !</h1>
-                <p className=" text-white mb-md-4">To smart and easy way to feedback, appointment and bill selection</p>
+                <h5 className="d-inline-block  text-uppercase "><ins>Patient's Dashboard</ins> </h5>
+                <h1 className="display-1  mb-md-4">Welcome To Clinic Management !</h1>
+                <p className="mb-md-4 display-6">To smart and easy way to feedback, appointment and bill selection</p>
               </div>
             </div>
           </div>
@@ -59,7 +60,7 @@ export default function PatientDashboard(props) {
 
   
     <div className="container-fluid my-5 py-5 ">
-        <div className="container py-5    ">
+        <div className="container py-5  ">
             <div className="row gx-5">
             <div class="col-12 col-sm-5 h-100">
                <img className="img-fluid h-100 object-fit-contain border rounded" src={AppointmentLogo}/>

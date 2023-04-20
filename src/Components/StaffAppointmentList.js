@@ -2,37 +2,42 @@ import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import{Link} from 'react-router-dom'
 import '../StyleSheets/AppointmentList.css'
-export default function AppointmentList() {
-  const [AppointmentList,setAppointmentList] = useState([])
 
-  useEffect(()=>{
-    let data = '';
+export default function StaffAppointmentList() {
+    const [AppointmentList,setAppointmentList] = useState([])
 
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'http://localhost:3001/patient/appoitment/list',
-      headers: { },
-      data : data
-    };
-    
-    axios.request(config)
-    .then((response) => {
-      console.log('response.data.data',response.data.data)
-      setAppointmentList(response.data.data)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-},[])
- console.log('Appointment:',AppointmentList)
+    useEffect(()=>{
+      let data = '';
+  
+      let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3001/patient/appoitment/list',
+        headers: { },
+        data : data
+      };
+      
+      axios.request(config)
+      .then((response) => {
+        console.log('response.data.data',response.data.data)
+        setAppointmentList(response.data.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },[])
+   console.log('Appointment:',AppointmentList)
+
+
   return (
-<div>
-  <h3  className=' text-primary mx-5'>
+    <div>
+      <div>
+  <h3  className=' text-primary mx-5 text-center'>
   <ins>AppointmentList</ins>
+
   </h3>  
-  <div className ="th">
-    <table className='table' style={{marginTop:"50px"}}>
+  <div className ="th" style={{marginTop:"150px"}}>
+    <table className='table'>
       <thead>
         <tr className='tr'>
           <th className ="th" style={{textAlign:'center'}}>PatientID</th>
@@ -45,7 +50,7 @@ export default function AppointmentList() {
           <th className ="th" style={{textAlign:'center'}}>Actions</th>
         </tr>
       </thead>
-      <tbody className='tbody'>
+      <tbody>
         {AppointmentList.map((item,index)=>{
           return(
             <tr key={item.patientID}>
@@ -57,10 +62,9 @@ export default function AppointmentList() {
               <td className ="td" >{item.createdAt}</td>
               <td className ="td">{item.updatedAt}</td>
               <td>
-                <Link to={`/patientdashboard/appoitnment/${item.patientID}`}>
-                  <button className='btn btn-edit'>Update</button>
+                <Link to={`/staffdashboard/createbill`}>
+                  <button className='btn btn-edit'>Createbill</button>
                 </Link>
-                <button className="btn btn-delete">Delete</button>
               </td>
             </tr>
           )
@@ -69,5 +73,6 @@ export default function AppointmentList() {
     </table>
   </div>
 </div>
+    </div>
   )
 }

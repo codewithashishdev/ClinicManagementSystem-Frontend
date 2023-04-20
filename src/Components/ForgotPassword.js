@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios  from 'axios';
+import '../StyleSheets/Login.css'
+
 
 export default function ForgotPassword() {
 
   const [Email,setEmail] = useState("")
+  const navigate = useNavigate()
 
   const  onChangeEmailAddress =(event)=>{
     setEmail(event.target.value)
@@ -32,7 +35,7 @@ axios.request(config)
   if(!(response.status === 200)){
     console.log('any field is not fill')
   }else {
-    window.location.href ='http://localhost:3000'
+    navigate(-1)
 }
 })
 .catch((error) => {
@@ -42,7 +45,7 @@ axios.request(config)
 
   return (
     <div className="container my-5 px-md-5">
-        <form class=" container border border-secondary col-7 mx-my-3" >
+        <form class=" container border border-secondary col-7 mx-my-3"id="Table">
       <div className="text-primary text-uppercase">
         <h3>Forgot Password</h3>
       </div>

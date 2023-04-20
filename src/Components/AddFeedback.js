@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import '../StyleSheets/Login.css'
 
 export default function AddFeedback() {
   
@@ -76,8 +77,8 @@ axios.request(config)
   return (
     <div>
       <div className="container my-5 mx-5">
-        <h3 className="text-primary"><ins>Add Feedback</ins> </h3>
-        <form class=" container border border-secondary col-6 mx-my-3" >
+        <form class=" container border border-secondary col-6 mx-my-3" id="Table">
+        <h3 className="text-primary"><ins>Prescription</ins> </h3>
         {/* appoitment  */}
         <div className="mb-3 mx-5">
           <label htmlFor="FeedbackID" className="form-label" >  FeedbackID* </label>
@@ -116,7 +117,7 @@ axios.request(config)
         {/* add feedback */}
         <div className="mb-3 mx-5">
           <button type="submit" className="btn btn-primary mx-1 my-2">
-            <Link  className="nav-link"  id="addfeedback" onClick={CreateFeedback}  >  Add FeedBack </Link>
+            <Link  className="nav-link"  id="addfeedback" onClick={CreateFeedback}>Submit  </Link>
           </button>
         </div>
        </form>

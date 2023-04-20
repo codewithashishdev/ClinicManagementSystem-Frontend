@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router";
 import axios from 'axios'
+import '../StyleSheets/SignUp.css'
 
 function SignUp() {
   const [Fullname,setfullname] =useState("")
@@ -15,6 +17,8 @@ function SignUp() {
   const [City, setCity] = useState("");
   const [State, setState] = useState("");
   const [Pin, setPin] = useState("");
+  const navigate = useNavigate()
+
 
 const onChangeFullName =(event)=>{
 setfullname(event.target.value)
@@ -101,7 +105,7 @@ axios.request(config)
   if(!(response.status === 201)){
     console.log('any field is not fill')
   }else {
-    window.location.href ='http://localhost:3000'
+    navigate(-1)
 }})
 .catch((error) => {
   console.log(error);
@@ -111,7 +115,7 @@ axios.request(config)
   return (
     <>
       <div className="container " style={{ marginTop: "2%" }}>
-        <form className=" container border border-secondary col-7 " >
+        <form className=" container border border-secondary col-7" id="Signup" >
         <h3 className="mb-3 text-primary text-uppercase ">Sign Up</h3> 
         {/* fullname */}
         <div className="mb-3 mx-5">

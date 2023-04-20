@@ -1,7 +1,7 @@
 import React, { state, useState,useEffect ,useRef} from "react";
+import {useNavigate} from "react-router";
 import "../StyleSheets/Login.css";
 import axios from'axios'
-
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./SignUp";
 
@@ -9,9 +9,10 @@ export default function Login(props) {
 
   const [UserType, setuserType] = useState("");
   const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Password, setPassword] = useState(""); 
   const [errors, setErrors] = useState([])
- 
+ const navigate =useNavigate()
+
   const onChangeUserType =(event)=>{
     setuserType(event.target.value)
   }
@@ -23,6 +24,8 @@ export default function Login(props) {
   const onChangePassword =(event)=>{
     setPassword(event.target.value)
   }
+
+
  const saveUser = async(event) => {
   const User ={user_type: UserType ,email:Email,password:Password}
  
@@ -47,11 +50,11 @@ export default function Login(props) {
       }else {
         if ( User.user_type === 'Patient') {
           console.log(User.user_type)
-          window.location.href ='http://localhost:3000/patientdashboard'
+          navigate('/patientdashboard')
         } else if (User.user_type === 'Doctor') {
-          window.location.href ='http://localhost:3000/doctordashboard'
+          navigate('/doctordashboard')
         } else if(User.user_type==='Staff') {
-          window.location.href ='http://localhost:3000/staffdashboard'
+          navigate('/doctordashboard')
         }
       }
   })
@@ -59,11 +62,12 @@ export default function Login(props) {
     console.log(error);
   });
  }
+
   return (
     <>
-      <div className="container me-5 " style={{ marginTop: "2%" }}>
+      <div className="container me-5" style={{ marginTop: "2%" }}>
         
-        <form className=" container border border-secondary col-6 mx-my-3 mb-3" >
+        <form className=" container border border-white col-6 mx-my-3 mb-3"id="Table" >
           <div className="mb-5 mt-2">
           <h3 className="text-primary text-uppercase mb-3">Login</h3>
                  {/* userType */}
@@ -84,7 +88,7 @@ export default function Login(props) {
                 {/* Password */}
             <div className="mb-3 col px-md-5">
               <label htmlFor="exampleInputPassword1" className="form-label"> Password*</label>
-              <input type="password"className="form-control"id="exampleInputPassword1" value={Password}placeholder="password" onChange={onChangePassword}/>
+              <input type ="password" className="form-control"id="exampleInputPassword1" value={Password}placeholder="password" onChange={onChangePassword}/>
               <Link className="ml-auto border-link small-xl" to="/forgotpassword"> Forget Password? </Link>   
             </div>
         
@@ -99,6 +103,7 @@ export default function Login(props) {
               <small> Not a member? </small>  
               <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> Sign Up</Link>
               </div>
+              <small > Create a Account for a smart, east and fast clinic Management. </small>  
             </div>
            
           </div>

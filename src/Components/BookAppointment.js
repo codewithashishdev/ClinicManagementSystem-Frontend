@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios  from 'axios';
+import "../StyleSheets/Login.css";
 export default function BookAppointment() {
 
 
@@ -95,7 +96,7 @@ axios.request(config)
  
   return (
     <div className="container my-5 mx-5">
-      <form class=" container border border-secondary col-6 mx-my-3" >
+      <form class=" container border border-secondary col-6 mx-my-3" id="Table">
       <h3 className="text-primary"><ins> Book Appointment</ins></h3>
         
     {/* PatientID  */}

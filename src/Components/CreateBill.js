@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import{Link} from 'react-router-dom'
 import axios from 'axios'
+import "../StyleSheets/Login.css";
 
 
 
@@ -55,7 +56,7 @@ const handleChange = (event) => {
 };
 
 const onClickCreateBill =(event)=>{
-  let data = {
+  let Bill = {
     "patientID": PatientID,
     "appointmentID": AppointmentID,
     "Medicine": Medicine,
@@ -68,6 +69,8 @@ const onClickCreateBill =(event)=>{
     "Payment_type": PaymentMethod,
     "payment_status": PaymentStatus
   }
+  console.log("data",Bill)
+  let data = JSON.stringify(Bill);
   console.log(data)
   let config = {
     method: 'post',
@@ -97,7 +100,7 @@ const onClickCreateBill =(event)=>{
   return (
     <>
     <div className="container my-5 mx-5">
-    <form class=" container border border-secondary col-6 mx-my-3" >
+    <form class=" container border border-secondary col-6 mx-my-3" id='Table' >
       <h3 className="text-primary"><ins> Create Bill</ins></h3> 
       {/* PatientID  */}
       <div className="mb-3 mx-5">
@@ -167,7 +170,7 @@ const onClickCreateBill =(event)=>{
       {/* add feedback */}
       <div className="mb-3 mx-5">
         <button type="submit" className="btn btn-primary mx-1 my-2">
-          <Link className="nav-link"  id="addfeedback" onClick={onClickCreateBill}> Create Bill  </Link>
+          <Link className="nav-link"  id="addfeedback" onClick={onClickCreateBill}> Submit</Link>
         </button>
         <button type="submit" className="btn btn-primary mx-1 my-2">
           <Link className="nav-link"  id="addfeedback" to ="/staffdashboard"> Back</Link>

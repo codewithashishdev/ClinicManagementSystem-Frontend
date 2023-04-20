@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import axios from'axios'
 import Logo from '../Images/Logo.png'
+import '../StyleSheets/Dashboard.css'
 
 export default function StaffDashboard() {
 
@@ -33,7 +34,7 @@ const onClickAppointmentList =() =>{
   return (
     <>
     <div>
-          <nav className="navbar navbar-expand-lg bg-body-tertiary"  style={{backgroundColor:"#e3f2fd"}}>
+          <nav className="navbar navbar-expand-lg bg-body-tertiary"style={{backgroundColor:"#e3f2fd"}}>
   <div className="container-fluid">
 
   <a className="navbar-brand navbar-light bg-light text-primary" to="/">
@@ -52,38 +53,41 @@ const onClickAppointmentList =() =>{
         <li className="nav-item mx-2 ">
           <Link className="nav-link text-primary"  to="/staffdashboard/appointmentlist"> Appointment List</Link>
         </li>
-        <li className="nav-item mx-2">
+        {/* <li className="nav-item mx-2">
           <Link className="nav-link text-primary"to="/staffdashboard/createbill">Create Bill</Link>
-        </li>
+        </li> */}
         <li className="nav-item mx-2">
           <Link className="nav-link text-primary"to="/staffdashboard/viewbill">View Bill</Link>
         </li>
-        <li className="nav-item mx-2">
+        {/* <li className="nav-item mx-2">
           <Link className="nav-link text-primary"to="/staffdashboard/example">Example</Link>
-        </li>
+        </li> */}
       </ul>
       <ul className="navbar-nav topnav-right">
+      <li className="nav-item">
+              <Link className="nav-link text-primary" to="/staffdashboard/changepassword">ChangePassword</Link>
+            </li>
             <li className="nav-item">
-              <Link className="nav-link text-primary" to="/"> LogOut</Link>
+              <Link className="nav-link text-danger" to="/"> LogOut</Link>
             </li>
           </ul>
     </div>
   </div>
 </nav>
-<div className="container my-3">
+
 
 <div className ="bg-white">
-      <div className="container-fluid bg-primary py-5 mb-5 hero-header">
+      <div className="container-fluid bg-primary py-5 mb-5 hero-header" id='DashBoard'>
         <div className="container py-5">
           <div className="row justify-content-start">
             <div className="col-lg-8 text-center text-lg-start">
-              <h5 className="d-inline-block text-white text-uppercase "> This is Staff's Dashboard</h5>
-              <h1 className="display-1 text-white mb-md-4">Welcome To Clinic Management !</h1>
-              <p className=" text-white mb-md-4">To smart and easy way to feedback, appointment and bill selection</p>
+              <h5 className="d-inline-block text-uppercase "> This is Staff's Dashboard</h5>
+              <h1 className="display-1  mb-md-4">Welcome To Clinic Management !</h1>
+              <p className="display-6 mb-md-4">To smart and easy way to feedback, appointment and bill selection</p>
             </div>
           </div>
         </div>
-      </div>
+   
     
 </div>
 </div>
