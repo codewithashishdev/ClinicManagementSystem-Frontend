@@ -6,7 +6,7 @@ import Logo from '../Images/Logo.png'
 import DashboardFooter from "./DashboardFooter";
 
 
-export default function BookAppointment() {
+export default function StaffBookAppointment() {
 
 
   const [PatientID,setPatientID] =useState("")
@@ -96,7 +96,7 @@ axios.request(config)
       <a className="navbar-brand navbar-light bg-light text-primary">
         <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
       </a>
-      <Link className="navbar-brand text-primary " to="/patientdashboard">Dashboard</Link>
+      <Link className="navbar-brand text-primary " to="/staffdashboard">Dashboard</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -104,18 +104,18 @@ axios.request(config)
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li className="nav-item mx-2" >
-            <Link className="nav-link active text-primary"  aria-current="page" to='/patientdashboard/bookappointment'>Book Appointment</Link>
+            <Link className="nav-link active text-primary"  aria-current="page" to='/staffdashboard/bookappointment'>Book Appointment</Link>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link text-primary " to="/patientdashboard/appointmentlist" > Appointment List</Link>
+            <Link className="nav-link text-primary " to="/staffdashboard/appointmentlist" > Appointment List</Link>
           </li>
           <li className="nav-item mx-2">
-            <Link className="nav-link text-primary" to="/patientdashboard/viewbill">ViewBill</Link>
+            <Link className="nav-link text-primary" to="/staffdashboard/viewbill">ViewBill</Link>
           </li>
         </ul>
         <ul className="navbar-nav topnav-right">
         <li className="nav-item mx-2">
-            <Link className="nav-link text-primary " to="/patientdashboard/changepassword"> ChangePassword</Link>
+            <Link className="nav-link text-primary " to="/staffdashboard/changepassword"> ChangePassword</Link>
           </li>
           <li className="nav-item  mx-2">
             <Link className="nav-link text-danger " to="/"> LogOut</Link>

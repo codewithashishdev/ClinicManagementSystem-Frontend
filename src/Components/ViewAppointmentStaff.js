@@ -1,16 +1,15 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
-import{Link} from 'react-router-dom'
+import{Link, useParams} from 'react-router-dom'
 import '../StyleSheets/AppointmentList.css'
 import BillDetail from './BillDetail';
 import Logo from '../Images/Logo.png'
 import DashboardFooter from './DashboardFooter';
 
+export default function ViewAppointmentStaff() {
 
-export default function ViewBill() {
+  const [Bill,setBill] =useState([])
 
-  const[Bill,setBill] =useState([])
-  
   useEffect(()=>{
     let data = '';  
     
@@ -19,9 +18,7 @@ export default function ViewBill() {
       method: 'get',
       maxBodyLength: Infinity,
       url: 'http://localhost:3001/staff/bill/list',
-      headers: {
-        'Content-Type': 'application/json'
-       },
+      headers: { },
       data : data
     };
     
@@ -29,13 +26,13 @@ export default function ViewBill() {
     .then((response) => {
       console.log('response.data.data',response.data.data)
       setBill(response.data.data)
+      localStorage.setItem('Bill',JSON.stringify(response.data.data))
     })
     .catch((error) => {
       console.log(error);
     });
 },[])
  console.log('Bill:',Bill)
-
   return (
   <>
     <nav className="navbar navbar-expand-lg navbar-light main-navigation" id='nav' style={{ backgroundColor: "#e3f2fd" }}>
@@ -43,7 +40,7 @@ export default function ViewBill() {
         <a className="navbar-brand navbar-light bg-light text-primary">
           <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
         </a>
-        <Link className="navbar-brand text-primary " to="/patientdashboard">Dashboard</Link>
+        <Link className="navbar-brand text-primary " to="/staffdashboard">Dashboard</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -51,19 +48,16 @@ export default function ViewBill() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item mx-2" >
-              <Link className="nav-link active text-primary"  aria-current="page" to='/patientdashboard/bookappointment'>Book Appointment</Link>
+              <Link className="nav-link active text-primary"  aria-current="page" to='/staffdashboard/bookappointment'>Book Appointment</Link>
             </li>
             <li className="nav-item mx-2">
-              <Link className="nav-link text-primary " to="/patientdashboard/appointmentlist" > Appointment List</Link>
+              <Link className="nav-link text-primary " to="/staffdashboard/appointmentlist" > Appointment List</Link>
             </li>
             <li className="nav-item mx-2">
-              <Link className="nav-link text-primary" to="/patientdashboard/viewbill">ViewBill</Link>
+              <Link className="nav-link text-primary" to="/staffdashboard/viewbill">ViewBill</Link>
             </li>
           </ul>
           <ul className="navbar-nav topnav-right">
-          <li className="nav-item mx-2">
-              <Link className="nav-link text-primary " to="/patientdashboard/changepassword"> ChangePassword</Link>
-            </li>
             <li className="nav-item  mx-2">
               <Link className="nav-link text-danger " to="/"> LogOut</Link>
             </li>
@@ -94,8 +88,10 @@ export default function ViewBill() {
       </thead>
       <tbody>
         {Bill.map((item,index)=>{
+
           return(
             <tr key={item.patientID}>
+               
               <th scope='row'>{index+1}</th>
               <td className ="td">{item.appointmentID}</td>
               <td className ="td">{item.date}</td>

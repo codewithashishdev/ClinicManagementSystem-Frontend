@@ -17,6 +17,8 @@ import ChangePassword from "./Components/ChangePassword";
 import DcotorAppointmentList from "./Components/DoctorAppointmentList"
 import StaffAppointmentList from "./Components/StaffAppointmentList";
 import BillDetail from "./Components/BillDetail";
+import ViewAppointmentStaff from "./Components/ViewAppointmentStaff";
+import StaffBookAppointment from "./Components/StaffBookAppointment";
 function App() {
   return (
     <Router>
@@ -46,10 +48,10 @@ function App() {
       </Routes>
       <Routes>
       <Route path="/staffdashboard/createbill" element={<CreateBill />}/>
-      <Route path="/staffdashboard/bookappointment" element={<BookAppointment />}/>
+      <Route path="/staffdashboard/bookappointment" element={<StaffBookAppointment/>}/>
       <Route path="/staffdashboard/appointmentlist"element ={<StaffAppointmentList/>}/>
       <Route path="/staffdashboard/example" element ={<Example/>}/>
-      <Route path="/staffdashboard/viewbill"element ={<ViewBill/>}/>
+      <Route path="/staffdashboard/viewbill"element ={<ViewAppointmentStaff/>}/>
       <Route path="/staffdashboard/changepassword"element ={<ChangePassword/>}/>
       <Route path="/staffdashboard/viewbill/:patientID"element ={<BillDetail/>}/>
       </Routes>

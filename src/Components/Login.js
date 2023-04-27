@@ -1,111 +1,131 @@
-import React, { state, useState,useEffect ,useRef} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { state, useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../StyleSheets/Login.css";
-import axios from'axios'
+import {toast} from 'react-toastify'
+import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import SignUp from "./SignUp";
 
-export default function Login(props) {
+export default function Login() {
 
   const [UserType, setuserType] = useState("");
   const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState(""); 
-  const [errors, setErrors] = useState([])
- const navigate =useNavigate()
+  const [Password, setPassword] = useState("");
+// const [Token,setToken]=useState("")
+  const navigate = useNavigate()
+  // const win = window.sessionStorage
 
-  const onChangeUserType =(event)=>{
+  const onChangeUserType = (event) => {
     setuserType(event.target.value)
   }
 
-  const onChangeEmailAddress =(event)=>{
+  const onChangeEmailAddress = (event) => {
     setEmail(event.target.value)
   }
 
-  const onChangePassword =(event)=>{
+  const onChangePassword = (event) => {
     setPassword(event.target.value)
   }
 
 
- const saveUser = async(event) => {
-  const User ={user_type: UserType ,email:Email,password:Password}
- 
-  let data = JSON.stringify(User);
-  
-  let config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: 'http://localhost:3001/auth/user/login',
-    headers: { 
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
-  
-  axios.request(config)
-  .then((response) => {
-    console.log(JSON.stringify(response.data));
-    if(!(response.status === 200)){
-        const errorData =response.json();
-        setErrors(errorData.errors)
-      }else {
-        if ( User.user_type === 'Patient') {
-          console.log(User.user_type)
-          navigate('/patientdashboard')
-        } else if (User.user_type === 'Doctor') {
-          navigate('/doctordashboard')
-        } else if(User.user_type==='Staff') {
-          navigate('/staffdashboard')
-        }
-      }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
- }
 
+  const saveUser = async (event) => {
+    event.preventDefault();
+    try {
+      const User = { user_type: UserType, email: Email, password: Password }
+      let data = JSON.stringify(User);
+
+
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3001/auth/user/login',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
+
+      axios.request(config)
+        .then((response) => {
+          // console.log(response.data.Data.token)
+          // setToken(response.data.Data.token)
+          localStorage.setItem('login',JSON.stringify({
+            Login : true,
+            token : response.data.Data.token
+          }))
+          // console.log(response.token)
+          // console.log(response.status)
+        
+          if (response.status === 200) {
+            if (User.user_type === 'Patient') {
+              navigate('/patientdashboard')
+              toast.success('Welcome ! patient',
+                {position: toast.POSITION.TOP_RIGHT,
+                })
+            } else if (User.user_type === 'Doctor') {
+              navigate('/doctordashboard')
+              toast.success('Welcome ! Doctor',
+              {position: toast.POSITION.TOP_RIGHT,
+              })
+            } else if (User.user_type === 'Staff') {
+              navigate('/staffdashboard')
+              toast.success('Welcome ! Staff Mamber',
+              {position: toast.POSITION.TOP_RIGHT,
+              })
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data.error)
+          toast.error(error.response.data.error,
+          {position: toast.POSITION.TOP_RIGHT,
+          })
+        });
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <>
       <div className="container me-5" style={{ marginTop: "2%" }}>
-        
-        <form className=" container border border-white col-6 mx-my-3 mb-3"id="Table" >
+
+        <form className=" container border border-white col-6 mx-my-3 mb-3" id="Table" >
           <div className="mb-5 mt-2">
-          <h3 className="text-primary text-uppercase mb-3">Login</h3>
-                 {/* userType */}
+            <h3 className="text-primary text-uppercase mb-3">Login</h3>
+            {/* userType */}
             <div className="col px-md-5">
               <div className="mb-2">Select Your Role*</div>
-            <select className="form-select mb-3"aria-label="Default select example"value={UserType} onChange={onChangeUserType}>
+              <select className="form-select mb-3" aria-label="Default select example" value={UserType} onChange={onChangeUserType}>
                 <option defaultValue value="">-Select Role-</option>
                 <option value='Doctor'> Doctor </option>
                 <option value='Staff'>Staff</option>
                 <option value='Patient'>Patient</option>
               </select>
-             </div>
-                {/* Email Address */}
+            </div>
+            {/* Email Address */}
             <div className="mb-3 col px-md-5">
               <label htmlFor="exampleInputEmail1" className="form-label"> Email Address*</label>
-              <input type="text" className="form-control"id="exampleInputEmail1"aria-describedby="emailHelp"placeholder="name@example.com"value={Email} onChange={onChangeEmailAddress}/>
-               </div>
-                {/* Password */}
+              <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@example.com" value={Email} onChange={onChangeEmailAddress} />
+            </div>
+            {/* Password */}
             <div className="mb-3 col px-md-5">
               <label htmlFor="exampleInputPassword1" className="form-label"> Password*</label>
-              <input type ="password" className="form-control"id="exampleInputPassword1" value={Password}placeholder="password" onChange={onChangePassword}/>
-              <Link className="ml-auto border-link small-xl" to="/forgotpassword"> Forget Password? </Link>   
+              <input type="password" className="form-control" id="exampleInputPassword1" value={Password} placeholder="password" onChange={onChangePassword} />
+              <Link className="ml-auto border-link small-xl" to="/forgotpassword"> Forget Password? </Link>
             </div>
-        
-                  {/* Login */}
+            {/* Login */}
             <div className="text-center">
               <button type="submit" className="btn btn-primary mx-1 my-2">
-                <Link className="nav-link " id="login"onClick={saveUser}>Log In</Link>
+                <Link className="nav-link " id="login" onClick={saveUser}>Log In</Link>
               </button>
               {/* signUp */}
               <div>
-                
-              <small> Not a member? </small>  
-              <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> Sign Up</Link>
+                <small> Not a member? </small>
+                <Link className="link-opacity-75-hover mb-3" id="signup" to="/signup"> SignUp</Link>
               </div>
-              <small > Create a Account for a smart, east and fast clinic Management. </small>  
+              <small > Create a Account for a smart, east and fast clinic Management. </small>
             </div>
-           
           </div>
         </form>
       </div>

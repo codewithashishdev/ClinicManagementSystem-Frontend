@@ -2,12 +2,14 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Logo from '../Images/Logo.png'
 import '../StyleSheets/Dashboard.css'
+import DashboardFooter from './DashboardFooter';
 
 function DocotorDashboard() {
   return (
+  <>
     <div> 
       {/* navbar */}
-      <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ backgroundColor: "#e3f2fd" }}>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" style={{ backgroundColor: "#e3f2fd" }}>
         <div className="container-fluid">
           <Link className="navbar-brand navbar-light bg-light text-primary" to="/doctordashboard">
             <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
@@ -52,10 +54,12 @@ function DocotorDashboard() {
             </div>
           </div>
       </div>
-    
-    </div>
-    
-  )
+      </div>
+    <div>  <DashboardFooter/>
+    </div> 
+        </>
+
+   )
 }
 
 

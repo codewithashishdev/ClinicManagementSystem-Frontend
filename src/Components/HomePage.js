@@ -14,15 +14,25 @@ import '../StyleSheets/Home.css'
 
 
 export default function Hero() {
-  return (
-    <div className =" bg-white ">
+  return (<>
+       <nav className="navbar navbar-expand-lg navbar-custom fixed-top" id='nav' style={{ backgroundColor: "#e3f2fd" }}>
+      <div className="container-fluid">
+        <a className="navbar-brand bg-light text-primary">
+          <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
+ 
+        </a>
+        <Link className="navbar-brand text-primary " to="/">ClinicManagement</Link>
+      </div>
+    </nav>
+
+    <div className =" bg-white  ">
           
-      <div className="container display-6">
+      <div className="container display-6  ">
       <Link className="container" to="/">
             <img src={Logo} className="align-center mb-2" alt="Logo" />
           </Link><ins>Clinic Management</ins></div>
   {/* hero */}
-      <div className="container-fluid   hero-header">
+      <div className="container-fluid mt-20 hero-header">
         <div className="container py-5"  id ="hero">
           <div className="row justify-content-start">
             <div className="col-lg-8 text-center text-lg-start">
@@ -91,5 +101,6 @@ export default function Hero() {
       <Footer/>
     </div>
     </div>
+    </>
   );
 }

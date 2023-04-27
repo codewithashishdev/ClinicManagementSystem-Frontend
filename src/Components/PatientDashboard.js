@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AppointmentLogo from '../Images/Appointment.jpg'
 import Logo from '../Images/Logo.png'
 import '../StyleSheets/Dashboard.css'
+import DashboardFooter from "./DashboardFooter";
 
 
 
@@ -10,7 +11,7 @@ import '../StyleSheets/Dashboard.css'
 export default function PatientDashboard() {
 
   return (<>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary " style={{ backgroundColor: "#e3f2fd" }}>
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top" id='nav' style={{ backgroundColor: "#e3f2fd" }}>
       <div className="container-fluid">
         <a className="navbar-brand navbar-light bg-light text-primary">
           <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
@@ -23,7 +24,7 @@ export default function PatientDashboard() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item mx-2" >
-              <Link className="nav-link active text-primary" aria-current="page" to='/patientdashboard/bookappointment'>Book Appointment</Link>
+              <Link className="nav-link active text-primary"  aria-current="page" to='/patientdashboard/bookappointment'>Book Appointment</Link>
             </li>
             <li className="nav-item mx-2">
               <Link className="nav-link text-primary " to="/patientdashboard/appointmentlist" > Appointment List</Link>
@@ -78,7 +79,9 @@ export default function PatientDashboard() {
             </div>
         </div>
     </div>
-
+<div>
+  <DashboardFooter/>
+</div>
   </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import Logo from '../Images/Logo.png'
 import '../StyleSheets/Login.css'
 
 export default function AddFeedback() {
@@ -76,9 +77,42 @@ axios.request(config)
   }
   return (
     <div>
-      <div className="container my-5 mx-5">
-        <form class=" container border border-secondary col-6 mx-my-3" id="Table">
-        <h3 className="text-primary"><ins>Prescription</ins> </h3>
+                  <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" style={{ backgroundColor: "#e3f2fd" }}>
+        <div className="container-fluid">
+          <Link className="navbar-brand navbar-light bg-light text-primary" to="/doctordashboard">
+            <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
+          </Link>
+          <Link className="navbar-brand text-primary" to="/doctordashboard">Dashboard  </Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+              {/* <li className="nav-item mx-2" >
+                <Link className="nav-link active text-primary" aria-current="page" to="/doctordashboard/addfeedback">Add FeedBack</Link>
+              </li> */}
+              <li className="nav-item mx-2">
+                <Link className="nav-link text-primary" to="/doctordashboard/appointmentlist"> Appointment List/ Feedback</Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav topnav-right">
+            <li className="nav-item">
+                <Link className="nav-link text-primary" to="/doctordashboard/changepassword">ChangePassword</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-danger" to="/"> LogOut</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      
+      <div className="container my-10 mx-10">
+
+        <form class=" container border border-secondary col-6 mx-my-3 mt-4" id="Table">
+      
         {/* appoitment  */}
         <div className="mb-3 mx-5">
           <label htmlFor="FeedbackID" className="form-label" >  FeedbackID* </label>

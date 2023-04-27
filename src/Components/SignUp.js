@@ -1,8 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {useNavigate} from "react-router";
+import {toast} from 'react-toastify'
 import axios from 'axios'
 import '../StyleSheets/SignUp.css'
+import Logo from '../Images/Logo.png'
+import Footer from "./Footer";
+import DashboardFooter from "./DashboardFooter";
 
 function SignUp() {
   const [Fullname,setfullname] =useState("")
@@ -64,59 +68,70 @@ const handleChange = (e) => {
 
 
  const CreateUser =async()=>{
-
-
-  // console.log( Fullname,Email,Password,PhoneNo,UseType,Address,Landmark,City,State,Pin,date)
-  // console.log("usertype",UseType)
-  // console.log("date",date)
-  // console.log('gender',Gender)
-  // console.log('usertype',UseType)
+try {
+  
  let User = {
-   "full_name": Fullname,
-   "gender":Gender,
-   "email": Email,
-   "phone":PhoneNo,
-   "password":Password,
-   "user_type":UseType,
-   "date_of_birth":date,
-   "address_line_1":Address,
-   "landmark":Landmark,
-   "city":City,
-   "state":State,
-   "pin":Pin  
- };
+  "full_name": Fullname,
+  "gender":Gender,
+  "email": Email,
+  "phone":PhoneNo,
+  "password":Password,
+  "user_type":UseType,
+  "date_of_birth":date,
+  "address_line_1":Address,
+  "landmark":Landmark,
+  "city":City,
+  "state":State,
+  "pin":Pin  
+};
 
 let data = JSON.stringify(User);
 
 
 let config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'http://localhost:3001/auth/user/sign-up',
-  headers: { 
-    'Content-Type': 'application/json'
-  },
-  data : data
+ method: 'post',
+ maxBodyLength: Infinity,
+ url: 'http://localhost:3001/auth/user/sign-up',
+ headers: { 
+   'Content-Type': 'application/json'
+ },
+ data : data
 };
 
 axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-  if(!(response.status === 201)){
-    console.log('any field is not fill')
-  }else {
-    navigate(-1)
-}})
-.catch((error) => {
+   .then((response) => {
+            console.log(JSON.stringify(response.data));
+          if(!(response.status === 201)){
+            console.log('any field is not fill')
+          }else {
+            navigate(-1)
+          }})
+            .catch((error) => {
+              console.log(error.response.data.message)
+              toast.error(error.response.data.message,
+                {position: toast.POSITION.TOP_RIGHT,
+                })
+            
+          });
+} catch (error) {
   console.log(error);
-});
-
+}
 }
   return (
     <>
-      <div className="container " style={{ marginTop: "2%" }}>
-        <form className=" container border border-secondary col-7" id="Signup" >
-        <h3 className="mb-3 text-primary text-uppercase ">Sign Up</h3> 
+         <nav className="navbar navbar-expand-lg navbar-custom fixed-top" id='nav' style={{ backgroundColor: "#e3f2fd" }}>
+      <div className="container-fluid">
+        <a className="navbar-brand bg-light text-primary">
+          <img src={Logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
+ 
+        </a>
+        <Link className="navbar-brand text-primary " to="/">Sign Up</Link>
+      </div>
+    </nav>
+      <div className="container " style={{ marginTop: "6%" ,marginBottom:"6%"}}>
+<div className="container text-center text-primary"><h3>Sign Up</h3></div>
+        <form className=" container border border-secondary col-7 " id="Signup" >
+
         {/* fullname */}
         <div className="mb-3 mx-5">
           <label htmlFor="exampleFormControlInput1" className="form-label">  Full Name* </label>
@@ -198,6 +213,7 @@ axios.request(config)
       <label htmlFor="exampleFormControlFile1">Photo</label><br />
       <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
      </div>
+
         {/* sigup buttons */}
         <div className="my-2 mx-5">
           <button className="btn btn-primary mx-1">
@@ -208,10 +224,10 @@ axios.request(config)
             <Link className="nav-link" to = '/'>Back </Link>
           </button>
         </div>
-        
-       
         </form>
       </div>
+      <div>  <DashboardFooter/>
+    </div> 
     </>
   );
 }
@@ -223,3 +239,11 @@ export default SignUp;
 
 // gender:PropTypes.isRequired,
 // select:PropTypes.isRequired,
+
+
+
+  // console.log( Fullname,Email,Password,PhoneNo,UseType,Address,Landmark,City,State,Pin,date)
+  // console.log("usertype",UseType)
+  // console.log("date",date)
+  // console.log('gender',Gender)
+  // console.log('usertype',UseType)

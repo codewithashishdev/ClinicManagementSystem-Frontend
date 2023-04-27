@@ -6,9 +6,6 @@ export default function Footer() {
   return (
     <div>
 <footer className="footer" id='Footerbg'>
-    <div className='container display-6 text-primary'>
-        Clinic Management
-    </div>
     <hr />
 <div className="container bottom_border">
 <div className="row">

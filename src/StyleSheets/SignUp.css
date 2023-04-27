@@ -17,4 +17,7 @@ form{
      background-size: cover;
     }
 
+    #Error{
+        color: red;
+    }
     

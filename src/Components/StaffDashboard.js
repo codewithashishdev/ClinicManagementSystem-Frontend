@@ -26,22 +26,22 @@ export default function StaffDashboard() {
           <Link className="nav-link active text-primary" aria-current="page"  to="/staffdashboard/bookappointment">Book Appointment</Link>
         </li>
         <li className="nav-item mx-2 ">
-          <Link className="nav-link text-primary"  to="/staffdashboard/appointmentlist"> Appointment List</Link>
+          <Link className="nav-link text-primary"  to="/staffdashboard/appointmentlist"> AppointmentList</Link>
         </li>
         {/* <li className="nav-item mx-2">
           <Link className="nav-link text-primary"to="/staffdashboard/createbill">Create Bill</Link>
         </li> */}
         <li className="nav-item mx-2">
-          <Link className="nav-link text-primary"to="/staffdashboard/viewbill">View Bill</Link>
+          <Link className="nav-link text-primary"to="/staffdashboard/viewbill">ViewBill</Link>
         </li>
         {/* <li className="nav-item mx-2">
           <Link className="nav-link text-primary"to="/staffdashboard/example">Example</Link>
         </li> */}
       </ul>
       <ul className="navbar-nav topnav-right">
-      <li className="nav-item">
+      {/* <li className="nav-item">
               <Link className="nav-link text-primary" to="/staffdashboard/changepassword">ChangePassword</Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link text-danger" to="/"> LogOut</Link>
             </li>
@@ -61,9 +61,7 @@ export default function StaffDashboard() {
               <p className="display-6 mb-md-4">To smart and easy way to feedback, appointment and bill selection</p>
             </div>
           </div>
-        </div>
-   
-    
+        </div>  
 </div>
 </div>
     </div>
